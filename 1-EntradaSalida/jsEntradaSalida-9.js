@@ -13,6 +13,5 @@ function mostrarAumento()
 
     //agrego el resultado
     document.getElementById("resultado").value = sueldoFinal;
-
-
+    
 }
