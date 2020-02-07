@@ -7,6 +7,7 @@ function mostrar()
    var nombre = document.getElementById("elNombre").value;
    var edad = document.getElementById("laEdad").value;
 
+   //lo muestro por pantalla
    alert("usted se llama " + nombre + " y tiene " + edad + " años");
 
 }
