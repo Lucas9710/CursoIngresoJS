@@ -12,7 +12,7 @@ function mostrar()
 
 		while(isNaN(numero)){
 			numero = parseInt(prompt("esto no es un numero. ingrese un numero: "));
-
+			
 		}
 		//me fijo ell signo del numero
 
