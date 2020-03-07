@@ -20,14 +20,14 @@ function mostrar()
         producto = prompt("error, ingrese el producto"); 
     }
 
-    precio = prompt("ingrese el precio");
+    precio = parseInt(prompt("ingrese el precio"));
     while(precio < 100 || precio > 300 || isNaN(precio)){
-        precio = prompt("ingrese el precio");
+        precio = parseInt(prompt("ingrese el precio"));
     }
 
-    cantU = prompt("ingrese la cantidad de unidades");
+    cantU = parseInt(prompt("ingrese la cantidad de unidades"));
     while(cantU<= 0 && cantU > 1000){
-        cantU = prompt("ingrese la cantidad de unidades");
+        cantU = parseInt(prompt("ingrese la cantidad de unidades"));
     }
     marca = prompt("ingrese la marca");
     fabricante = prompt("ingrese el fabricante");
