@@ -1,0 +1,64 @@
+function mostrar()
+{
+    var peso ;
+    var precio;
+    var alimento;
+    var descuento;
+    var alimentoMasCaro
+    var descuento1 ;
+    var acumulador = 0;
+    var seguir;
+    var acumuladorK = 0;
+    var promedio;
+    var flag =0;
+    do{
+        peso = parseInt(prompt("ingrese el peso"));
+        while(isNaN(peso) || peso < 10 || peso > 1000){
+            peso =  parseInt(prompt("error.ingrese el peso"));
+    
+        }
+        
+        precio = parseInt(prompt("ingrese el precio"));
+        while(isNaN(precio) || precio <= 0){
+            precio = parseInt(prompt("error.ingrese el precio"));
+        }
+    
+        alimento = prompt("ingrese el alimento (v para vegetal,a para animal,m para mezcla ") ;
+        while(alimento != "v" && alimento != "a" && alimento != "m" ){
+            alimento = prompt("error.ingrese el alimento (v para vegetal,a para animal,m para mezcla ") ;
+        }
+    
+        if(peso > 100){
+            descuento = precio * 0.85;
+           
+        }
+    
+        if(peso > 300){
+            descuento1 = precio * 0.75;
+           
+            
+        }
+    
+        if(flag == 0 || precioMasCaro < precio){
+            alimentoMasCaro = alimento;
+            precioMasCaro = precio
+        }
+    
+        acumulador += precio;
+        acumuladorK += peso;
+        
+        seguir = prompt("para continuar ingrese 'si'");
+    }while(seguir == "si");
+    
+    promedio = acumulador / acumuladorK;
+
+    alert("el importe total a pagar" + acumulador);
+    if(peso > 100){
+        alert("el total a pagar con descuento " + descuento);
+    }else if(peso > 300){
+        alert("el total a pagar con descuento " + descuento1);
+    }
+
+    alert("informar tipo de alimento mas caro" + alimentoMasCaro);
+    alert("el promedio de precio por kilo en total" + promedio);
+    
