@@ -1,0 +1,65 @@
+function mostrar()
+{
+  var producto;
+  var precio;
+  var cantU;
+  
+  var fabricante;
+  var contadorJabones = 0;
+  var flag =0;
+  var cantUbarbijo;
+  var fabricanteBarbijo;
+  var flag1 = 0;
+  var flag2 =0;
+ 
+
+  
+  for(var i = 0; i < 5; i++ ){
+    producto = prompt("ingrese el producto"); 
+        while(producto != "barbijo" && producto != "jabon" && producto != "alcohol"){
+        producto = prompt("error, ingrese el producto"); 
+    }
+
+    precio = prompt("ingrese el precio");
+    while(precio < 100 || precio > 300 || isNaN(precio)){
+        precio = prompt("ingrese el precio");
+    }
+
+    cantU = prompt("ingrese la cantidad de unidades");
+    while(cantU<= 0 && cantU > 1000){
+        cantU = prompt("ingrese la cantidad de unidades");
+    }
+    marca = prompt("ingrese la marca");
+    fabricante = prompt("ingrese el fabricante");
+
+    if((flag1 = 0 ||contadorJabones < cantU) && producto == "jabon"){
+        contadorJabones += cantU;
+        
+
+        
+
+    }
+    if((flag2 == 0 || precio > barbijoMascaro) && producto == "barbijo"){
+        barbijoMascaro = producto;
+        cantUbarbijo = cantU;
+        fabricanteBarbijo = fabricante;
+
+    }
+
+    if(flag == 0 || itemMayor < cantU){
+        itemMayor = cantU;
+        fabricanteMayor = fabricante;
+        flag = 1;
+    }
+
+
+
+  
+  
+
+}
+
+ alert("del mas caro de los barbijos, cantidad de unidades: " + cantUbarbijo + " y el fabricante " + fabricanteBarbijo);
+ alert("del item con mas unidades, el fabricante: " + fabricanteMayor);
+ alert("cuantas unidades de jabones hay en total: " + contadorJabones);
+}
