@@ -1,77 +1,86 @@
-function mostrar()
-{
-  var nombre;
-  var edad;
-  var sexo;
-  var estadoCivil;
-  var contF= 0;
-  var flag = 0;
-  var nombrePasajeroViejo;
-  var pasajeroViejo;
-  var flag2 = 0;
-  var sexoPasajeroViejo;
-  var hombreMasJoven;
-  var nombreMasjoven;
-  var seguir;
-  var contM;
-  var promedio = 0;
-  var promedioM = 0;
-  var acumuladorF =0;
-  var acumuladorM = 0;
-  
- do{
-    nombre = prompt("ingrese el nombre");
-    edad = parseInt(prompt("ingrese la edad"));
-    while(edad < 18){
-      edad = parseInt(prompt("error. ingrese la edad"));
-    }
-    sexo = prompt("ingrese el sexo");
-    while(sexo != "f" && sexo != "m"){
-      sexo = prompt("ingrese el sexo");
-    }
-  
-    estadoCivil = prompt("ingrese estado civil");
-    while(estadoCivil != "soltero" && estadoCivil != "casado" && estadoCivil !="viudo"){
-      estadoCivil = prompt("ingrese estado civil");
-    }
-  
-    if(sexo == "f" && estadoCivil != "soltero"){
-        contF++;
-        acumuladorF  += edad;
-    }
+function mostrar(){
+    var nombre;
+    var edad;
+    var sexo;
+    var estadoCivil;
+    var hombreJoven;
+    var nombreJoven;
+    var flag = 0;
+    var flag1 = 0;
+    var pasajeroViejo;
+    var sexoPasajeroViejo;
+    var nombrePasajeroViejo;
+    var contM = 0;
+    var seguir ;
+    var contF = 0;
+    var acumuladorM = 0;
+    var promedioM;
+    var promedioF;
+    var contFCasadaOsoltera = 0;
+    var acumuladorF=0;
 
-    if(sexo == "m" && estadoCivil == "soltero"){
-        acumuladorM+= edad;
-        contM++
-    }
-  
-    if(flag == 0 || pasajeroViejo < edad){
-        pasajeroViejo = edad;
-        nombrePasajeroViejo = nombre;
-        sexoPasajeroViejo = sexo;
-        flag = 1;
-    }
-  
-    if((flag2 == 0 || hombreMasJoven > edad) && sexo == "m" && estadoCivil == "casado"){
-       hombreMasJoven = edad;
-       nombreMasjoven = nombre;
-    }
-    seguir = prompt("desea continuar? escriba 'si'");
-  
- }while(seguir == "si"); 
-
-    if(contF != 0){
-        promedio = acumuladorF / contF;
-    }
+    do{
+        nombre = prompt("ingrse el nombre");
+        edad = parseInt(prompt("ingrese la edad, mayores de 18"));
+        while(edad < 18 || isNaN(edad)){
+            edad = parseInt(prompt("ingrese la edad, mayores de 18"));parseInt(prompt("ingrese la edad, mayores de 18"));
+        }
     
-    if(contM != 0){
+        sexo = prompt("ingrese el sexo('f', 'm')");
+        while(sexo != "f" && sexo != "m"){
+            sexo = prompt("ingrese el sexo('f', 'm')");
+        }
+    
+        estadoCivil= prompt("ingrese el estado civil");
+        while(estadoCivil != "soltero" && estadoCivil != "viudo" && estadoCivil !="casado"){
+            estadoCivil= prompt("ingrese el estado civil");
+        }
+    
+        if((flag == 0 || hombreJoven > edad) && sexo == "m" && estadoCivil == "casado"){
+            hombreJoven = edad;
+            nombreJoven = nombre;
+            flag= 1;
+        }
+    
+        if(flag1 == 0 || pasajeroViejo < edad){
+            pasajeroViejo = edad;
+            nombrePasajeroViejo = nombre;
+            sexoPasajeroViejo = sexo;
+            flag1= 1;
+        }
+    
+        if(sexo== "f" && (estadoCivil == "casado" || estadoCivil =="viudo")){
+            contFCasadaOsoltera++;
+        }
+
+        if(sexo == "m" && estadoCivil == "soltero"){
+            contM++;
+            acumuladorM += edad;
+        }
+
+        if(sexo == "f"){
+            contF++;
+            acumuladorF += edad;
+
+        }
+        
+        seguir = prompt("para continuar escriba 'si'");
+    }while(seguir == "si");
+  
+    if(contM!= 0){
         promedioM = acumuladorM / contM;
     }
+    
+    if(contF !=0){
+        promedioF = acumuladorF / contF;
+    }
 
-    alert("el nombre del hombre casado mas joven " + nombreMasjoven);
-    alert("el sexo del pasajero mas viejo " + sexoPasajeroViejo +" el nombre del pasajero mas viejo " + nombrePasajeroViejo  );
-    alert("la cantidad de mujeres que hay casadas o viudas " + contF);
-    alert("promedio de edad entre las mujeres " + promedio );
-    alert("el promedio de edad entre los hombres soltero " + promedioM);
+    alert("el nombre del hombre casado mas joven " + nombreJoven);
+    alert("el sexo del pasajero mas viejo "+ sexoPasajeroViejo +" el nombre del pasajero/a mas viejo/a " +  nombrePasajeroViejo);
+    alert("la cantidad de mujeres casadas o viudas " + contFCasadaOsoltera);
+    alert("el promedio de edad entre las mujeres " + promedioF);
+    alert("el promedio de edad entre los hombres solteros " + promedioM);
+
+
 
 }
