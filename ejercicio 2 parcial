@@ -1,0 +1,73 @@
+function mostrar(){
+	var peso;
+    var precio;
+    var precioTotal;
+    var alimento;
+    var seguir;
+    var descuento15;
+    var descuento25;
+    var acumuladorPrecio = 0;
+    var cont = 0;
+    var alimentoPrecio;
+    var alimentoCaro;
+    var acumuladorPeso = 0;
+    var promedio;
+
+	do{
+		peso = parseInt(prompt("ingrese el peso en k"));
+		while(peso < 10 || peso > 1000 || isNaN(peso)){
+			peso = parseInt(prompt("ingrese el peso en k"));
+        }
+        
+        precio = parseInt(prompt("ingrese el precio x k"));
+        while(precio <= 0 || isNaN(precio)){
+            precio = parseInt(prompt("ingrese el precio"));
+
+
+        }
+        precioTotal = precio * peso;
+        alimento = prompt("ingrese el alimento (a,v.m)");
+        while(alimento != "a" && alimento != "v" && alimento != "m"){
+            alimento = prompt("ingrese el alimento (a,v.m)");
+        }
+
+
+        acumuladorPrecio += precioTotal;
+        
+        acumuladorPeso+= peso;
+        
+        if( cont == 0 || alimentoPrecio < precio ){
+            alimentoPrecio = precio;
+            alimentoCaro = alimento;
+            
+        }
+
+        cont++;
+        seguir = prompt("ingrese 'si' para continuar");
+    }while(seguir == "si");
+
+    promedio = acumuladorPrecio / cont;
+
+    if(acumuladorPeso > 100 && acumuladorPeso <300){
+        descuento15 = acumuladorPrecio * 0.85 ;
+    }
+
+    if(acumuladorPeso > 300){
+        descuento25 = acumuladorPrecio * 0.75;
+    }
+    alert("a) El importe total a pagar , bruto sin descuento " + acumuladorPrecio);
+    if(acumuladorPrecio > 100 ){
+        alert("b) el importe total a pagar con descuento 15% " + descuento15);
+    }
+
+    if(acumuladorPrecio > 300){
+        alert("b) el importe total a pagar con descuento 25% " + descuento25);
+    }
+
+    
+    alert("d) Informar el tipo de alimento más caro. " + alimentoCaro);
+    alert("f) El promedio de precio por kilo en total. " + promedio);
+
+    
+
+}
